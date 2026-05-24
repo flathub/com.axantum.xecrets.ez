@@ -1,0 +1,110 @@
+app-id: com.axantum.xecrets.ez
+runtime: org.freedesktop.Platform
+runtime-version: "25.08"
+sdk: org.freedesktop.Sdk
+command: XecretsEz
+
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=x11
+  - --filesystem=host
+  - --socket=pcsc
+  - --device=dri
+
+modules:
+  - name: pcsc-lite
+    buildsystem: meson
+    config-opts:
+      - --libdir=lib
+      - -Dlibudev=false
+      - -Dlibsystemd=false
+      - -Dpolkit=false
+    post-install:
+      - rm /app/sbin/pcscd
+      - rmdir /app/sbin || true
+    cleanup:
+      - /bin
+      - /etc
+      - /include
+      - /share/doc
+      - /share/man
+      - /share/doc
+      - /share/metainfo
+      - /lib/libpcscspy.so*
+      - /lib/pkgconfig
+      - /lib/systemd
+      - /sysusers.d
+    sources:
+      - type: archive
+        url: https://pcsclite.apdu.fr/files/pcsc-lite-2.4.1.tar.xz
+        sha256: afd3ba68c8000d2be048dc292df99a9812df9ad2efaf0a366eea22ac1faa19a7
+        x-checker-data:
+          type: anitya
+          project-id: 2611
+          url-template: https://pcsclite.apdu.fr/files/pcsc-lite-$version.tar.xz
+
+  - name: xecrets-ez
+    buildsystem: simple
+    build-commands:
+      - install -D -m 0755 XecretsEz /app/bin/XecretsEz
+      - install -D -m 0644 LICENSE $FLATPAK_DEST/share/licenses/$FLATPAK_ID/xecrets-ez/LICENSE
+      - install -D -m 0644 gpl-3.0.txt $FLATPAK_DEST/share/licenses/$FLATPAK_ID/xecrets-ez/gpl-3.0.txt
+      - install -D -m 0644 com.axantum.xecrets.ez.desktop /app/share/applications/com.axantum.xecrets.ez.desktop
+      - install -D -m 0644 com.axantum.xecrets.ez.xml /app/share/mime/packages/com.axantum.xecrets.ez.xml
+      - install -D -m 0644 com.axantum.xecrets.ez.metainfo.xml /app/share/metainfo/com.axantum.xecrets.ez.metainfo.xml
+      - install -D -m 0644 XecretsEz.png /app/share/icons/hicolor/256x256/apps/com.axantum.xecrets.ez.png
+      - install -D -m 0644 xecrets-ez-16x16.png /app/share/icons/hicolor/16x16/mimetypes/com.axantum.xecrets.ez-application-vnd.xecrets-encrypted.png
+      - install -D -m 0644 xecrets-ez-32x32.png /app/share/icons/hicolor/32x32/mimetypes/com.axantum.xecrets.ez-application-vnd.xecrets-encrypted.png
+      - install -D -m 0644 xecrets-ez-48x48.png /app/share/icons/hicolor/48x48/mimetypes/com.axantum.xecrets.ez-application-vnd.xecrets-encrypted.png
+      - install -D -m 0644 xecrets-ez-128x128.png /app/share/icons/hicolor/128x128/mimetypes/com.axantum.xecrets.ez-application-vnd.xecrets-encrypted.png
+      - install -D -m 0644 xecrets-ez-256x256.png /app/share/icons/hicolor/256x256/mimetypes/com.axantum.xecrets.ez-application-vnd.xecrets-encrypted.png
+      - update-mime-database /app/share/mime
+    sources:
+      - type: archive
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1511.tar.gz
+        sha256: 0d152f8bac0f982a1c7bbb14d5dcd37df73fdb422f16354ab522d8cc493741a3
+        strip-components: 1
+        x-checker-data:
+          type: html
+          url: https://www.axantum.com/rss/releases
+          version-pattern: 'Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS, Linux and Windows'
+          url-template: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-$version.tar.gz
+        only-arches:
+          - x86_64
+      - type: archive
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1511.tar.gz
+        sha256: 8323028f0b8b9f4db6366fb64784130373b4a16823aba09945484b7fea7d74f2
+        strip-components: 1
+        x-checker-data:
+          type: html
+          url: https://www.axantum.com/rss/releases
+          version-pattern: 'Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS, Linux and Windows'
+          url-template: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-$version.tar.gz
+        only-arches:
+          - aarch64
+      - type: file
+        path: XecretsEz
+      - type: file
+        path: linux-desktop/com.axantum.xecrets.ez.desktop
+      - type: file
+        path: LICENSE
+      - type: file
+        path: gpl-3.0.txt
+      - type: file
+        path: linux-desktop/com.axantum.xecrets.ez.xml
+      - type: file
+        path: linux-desktop/com.axantum.xecrets.ez.metainfo.xml
+      - type: file
+        path: linux-desktop/XecretsEz.png
+      - type: file
+        path: linux-desktop/xecrets-ez-16x16.png
+      - type: file
+        path: linux-desktop/xecrets-ez-32x32.png
+      - type: file
+        path: linux-desktop/xecrets-ez-48x48.png
+      - type: file
+        path: linux-desktop/xecrets-ez-128x128.png
+      - type: file
+        path: linux-desktop/xecrets-ez-256x256.png
