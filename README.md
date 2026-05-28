@@ -35,7 +35,6 @@ The linter gives the following output:
 {
     "errors": [
         "finish-args-host-filesystem-access",
-        "finish-args-contains-both-x11-and-wayland"
     ],
     "message": "See https://docs.flathub.org/linter for details and exceptions"
 }
@@ -46,14 +45,10 @@ application intended to encrypt and decrypt files in all locations on the system
 devices and network shares. It would not be natural, and it would cripple it quite severaly if file
 access was sandboxed to a few specific locations. It can also be used to overwrite files, which is
 more secure than just deleting them from the file system, and that is another reason why host file
-system access is needed.
+system access is required.
 
-Network access is required in order to access files on network shares, and also for the single instance
-logic to work properly since it is implemented with named pipes and sockets.
-
-Both x11 and Wayland was added after actual compatibility issues were discovered when running in
-certain environments, for example a virtual machine under UTM. Just fallback x11 did not work
-unfortunately.
+Also some features are likely to break and make the app less useful, notably the ability to copy
+and paste files to encrypt/decrypt/open them. This won't work seamlessly with portals.
 
 Repo lint warnings
 ------------------
@@ -64,19 +59,12 @@ The linter gives the following output:
 {
     "errors": [
         "finish-args-host-filesystem-access",
-        "finish-args-contains-both-x11-and-wayland",
-        "appstream-screenshots-not-mirrored-in-ostree",
-        "appstream-external-screenshot-url"
-    ],
-    "info": [
-        "appstream-external-screenshot-url: Screenshots are not mirrored to https://dl.flathub.org/media"
     ],
     "message": "See https://docs.flathub.org/linter for details and exceptions"
 }
 ```
 
-Host file system access and both x11 and Wayland are discussed above. The screenshot warnings are as
-I understand it not critical at this stage, and will be resolved once it's built on flathub.
+Host file system access is discussed above.
 
 About building from source
 --------------------------
