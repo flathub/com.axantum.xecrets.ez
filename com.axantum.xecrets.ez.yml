@@ -8,7 +8,6 @@ tags:
 
 finish-args:
   - --share=ipc
-  - --share=network
   - --socket=x11
   - --filesystem=home
   - --filesystem=/tmp
