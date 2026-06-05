@@ -1,6 +1,6 @@
 app-id: com.axantum.xecrets.ez
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: XecretsEz
 tags:
@@ -38,8 +38,8 @@ modules:
       - /sysusers.d
     sources:
       - type: archive
-        url: https://pcsclite.apdu.fr/files/pcsc-lite-2.4.1.tar.xz
-        sha256: afd3ba68c8000d2be048dc292df99a9812df9ad2efaf0a366eea22ac1faa19a7
+        url: https://pcsclite.apdu.fr/files/pcsc-lite-2.5.0.tar.xz
+        sha256: 59b3c4b5be4ab228698edeb5b3ef46ad54ea217e7dd0891372770bb92b55db92
         x-checker-data:
           type: anitya
           project-id: 2611
@@ -69,24 +69,26 @@ modules:
           - export LD_LIBRARY_PATH="/app/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           - exec /app/bin/XecretsEz-bin "$@"
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1548.tar.gz
-        sha256: 7fbc0c672695c852c280686e1f5bd6aeae3003b9a9665e1b16246d2d87432225
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1507.tar.gz
+        sha256: 9330a5573124863ff0c12d477ed1a5d4b1eb2d7e25f541f668bd5060497f36af
         strip-components: 1
         x-checker-data:
           type: html
           url: https://www.axantum.com/rss/releases
-          version-pattern: 'Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS, Linux and Windows'
+          version-pattern: Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS,
+            Linux and Windows
           url-template: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-$version.tar.gz
         only-arches:
           - x86_64
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1548.tar.gz
-        sha256: eace26d4f252ad93b9d01d9c39d8cfa5a79fdc98097529cee6778df6e5ad609f
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1507.tar.gz
+        sha256: 3339f413ac79e1be07984bcbc70be72ecb687989c940b792fcb2813bfa879319
         strip-components: 1
         x-checker-data:
           type: html
           url: https://www.axantum.com/rss/releases
-          version-pattern: 'Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS, Linux and Windows'
+          version-pattern: Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS,
+            Linux and Windows
           url-template: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-$version.tar.gz
         only-arches:
           - aarch64
