@@ -38,8 +38,8 @@ modules:
       - /sysusers.d
     sources:
       - type: archive
-        url: https://pcsclite.apdu.fr/files/pcsc-lite-2.4.1.tar.xz
-        sha256: afd3ba68c8000d2be048dc292df99a9812df9ad2efaf0a366eea22ac1faa19a7
+        url: https://pcsclite.apdu.fr/files/pcsc-lite-2.5.0.tar.xz
+        sha256: 59b3c4b5be4ab228698edeb5b3ef46ad54ea217e7dd0891372770bb92b55db92
         x-checker-data:
           type: anitya
           project-id: 2611
@@ -55,7 +55,7 @@ modules:
       - install -D -m 0644 linux-desktop/$FLATPAK_ID.desktop /app/share/applications/$FLATPAK_ID.desktop
       - install -D -m 0644 linux-desktop/$FLATPAK_ID.xml /app/share/mime/packages/$FLATPAK_ID.xml
       - install -D -m 0644 linux-desktop/$FLATPAK_ID.metainfo.xml /app/share/metainfo/$FLATPAK_ID.metainfo.xml
-      - install -D -m 0644 linux-desktop/XecretsEz.png /app/share/icons/hicolor/256x256/apps/$FLATPAK_ID.png
+      - install -D -m 0644 linux-desktop/com.axantum.xecrets.ez.png /app/share/icons/hicolor/256x256/apps/$FLATPAK_ID.png
       - install -D -m 0644 linux-desktop/xecrets-ez-16x16.png /app/share/icons/hicolor/16x16/mimetypes/$FLATPAK_ID-application-vnd.xecrets-encrypted.png
       - install -D -m 0644 linux-desktop/xecrets-ez-32x32.png /app/share/icons/hicolor/32x32/mimetypes/$FLATPAK_ID-application-vnd.xecrets-encrypted.png
       - install -D -m 0644 linux-desktop/xecrets-ez-48x48.png /app/share/icons/hicolor/48x48/mimetypes/$FLATPAK_ID-application-vnd.xecrets-encrypted.png
@@ -69,24 +69,24 @@ modules:
           - export LD_LIBRARY_PATH="/app/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           - exec /app/bin/XecretsEz-bin "$@"
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1548.tar.gz
-        sha256: 7fbc0c672695c852c280686e1f5bd6aeae3003b9a9665e1b16246d2d87432225
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1570.tar.gz
+        sha256: 979e6542f73c0fdc4bc36bdbcbfb7af277695d298de94d443491939321ac386f
         strip-components: 1
         x-checker-data:
           type: html
-          url: https://www.axantum.com/rss/releases
-          version-pattern: 'Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS, Linux and Windows'
+          url: https://www.axantum.com/linux/version/targz/x86_64
+          version-pattern: XecretsEz-Linux-x64-([0-9]+\.[0-9]+\.[0-9]+).tar.gz
           url-template: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-$version.tar.gz
         only-arches:
           - x86_64
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1548.tar.gz
-        sha256: eace26d4f252ad93b9d01d9c39d8cfa5a79fdc98097529cee6778df6e5ad609f
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1570.tar.gz
+        sha256: daae636f6d0cf73860f2dba1abaa7983b49933b4dd9238f89d75cf662526562f
         strip-components: 1
         x-checker-data:
           type: html
-          url: https://www.axantum.com/rss/releases
-          version-pattern: 'Xecrets Ez release ([0-9]+\.[0-9]+\.[0-9]+) for macOS, Linux and Windows'
+          url: https://www.axantum.com/linux/version/targz/aarch64
+          version-pattern: XecretsEz-Linux-arm64-([0-9]+\.[0-9]+\.[0-9]+).tar.gz
           url-template: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-$version.tar.gz
         only-arches:
           - aarch64
