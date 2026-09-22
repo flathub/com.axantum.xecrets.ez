@@ -1,6 +1,6 @@
 app-id: com.axantum.xecrets.ez
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 command: XecretsEz
 tags:
@@ -69,8 +69,8 @@ modules:
           - export LD_LIBRARY_PATH="/app/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           - exec /app/bin/XecretsEz-bin "$@"
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1669.tar.gz
-        sha256: 8c79e246bb9dc2d423c362277b5b2028c2102f5d782f135d61b46b167871a767
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1796.tar.gz
+        sha256: 113c568a485f282c2eba4f095ee92d97c1998d146a30d2a082416769643eec8c
         strip-components: 1
         x-checker-data:
           type: html
@@ -80,8 +80,8 @@ modules:
         only-arches:
           - x86_64
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1669.tar.gz
-        sha256: 31e8c64ce7d48d3a3b5e772b3340065ff481ce3d0febbf0ca95cbccff160aac0
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1796.tar.gz
+        sha256: 1b8fa321f42f20a76ddb76e84d82ce53f8113652c25912955cb32eb3519e0f22
         strip-components: 1
         x-checker-data:
           type: html
