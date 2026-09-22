@@ -69,8 +69,8 @@ modules:
           - export LD_LIBRARY_PATH="/app/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           - exec /app/bin/XecretsEz-bin "$@"
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1796.tar.gz
-        sha256: 113c568a485f282c2eba4f095ee92d97c1998d146a30d2a082416769643eec8c
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-x64-2.3.1801.tar.gz
+        sha256: 5f66299c16b394682d8d0e8373666ca1b7cd7ffe477cb234047a4407394df106
         strip-components: 1
         x-checker-data:
           type: html
@@ -80,8 +80,8 @@ modules:
         only-arches:
           - x86_64
       - type: archive
-        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1796.tar.gz
-        sha256: 1b8fa321f42f20a76ddb76e84d82ce53f8113652c25912955cb32eb3519e0f22
+        url: https://www.axantum.com/build/linux/XecretsEz-Linux-arm64-2.3.1801.tar.gz
+        sha256: 6fb727c782d9d35a2889a3d38a4777d2f2f81c968dd8b995122b2c686367befd
         strip-components: 1
         x-checker-data:
           type: html
